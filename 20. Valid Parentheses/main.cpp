@@ -8,11 +8,45 @@ class Solution
 public:
   bool isValid(string s)
   {
+    map<char, int> bracketPairs = {
+        {'}', 0},
+        {')', 0},
+        {']', 0},
+        {'{', 0},
+        {'(', 0},
+        {'[', 0},
+    };
 
-    map<char, char> bracketPairs = {
+    map<char, char> pair = {
         {'}', '{'},
-        {')', '('},
-        {']', '['}};
+        {')', ')'},
+        {']', '['},
+        {'{', '}'},
+        {'(', ')'},
+        {'[', ']'},
+    };
+
+    for (int i = 0; i < s.length(); i++)
+
+    {
+      char c = s[i];
+      if (i + 1 != s.length())
+      {
+        char next = s[i + 1];
+        if (pair[c] != next)
+        {
+          return false;
+        }
+      }
+
+      bracketPairs[c] += 1;
+    }
+
+    if (bracketPairs['}'] == bracketPairs['{'] && bracketPairs['('] == bracketPairs[')'] && bracketPairs['['] == bracketPairs[']'])
+    {
+
+      return true;
+    }
 
     return false;
   }
