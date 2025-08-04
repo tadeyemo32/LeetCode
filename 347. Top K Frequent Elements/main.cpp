@@ -1,5 +1,7 @@
 #include "../../bits/stdc++.h"
 
+/// solve using max heap approach and frequency list
+
 class Solution
 {
 public:
