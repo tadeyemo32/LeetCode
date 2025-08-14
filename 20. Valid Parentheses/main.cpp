@@ -1,55 +1,36 @@
-#include <string>
-#include <map>
-#include <iostream>
-using namespace std;
+#include "../../bits/stdc++.h"
+
 
 class Solution
 {
 public:
-  bool isValid(string s)
-  {
-    map<char, int> bracketPairs = {
-        {'}', 0},
-        {')', 0},
-        {']', 0},
-        {'{', 0},
-        {'(', 0},
-        {'[', 0},
-    };
+    unordered_map<char,char> checkChar = {
+        {'[',']'},
+        {']','['},
+        {'(',')'},
+        {')','('},
+        {'{','}'},
+        {'}','{'}, 
+    };   
+    stack<char> checker; 
 
-    map<char, char> pair = {
-        {'}', '{'},
-        {')', ')'},
-        {']', '['},
-        {'{', '}'},
-        {'(', ')'},
-        {'[', ']'},
-    };
+    bool isValid(string s){
+        string val;
+   for(auto c : s){
+     if(c=='('||c==')'||c=='['||c==']'||c=='{'||c=='}'){
+        checker.push(c);
+        val.push_back(c);
+     }  
 
-    for (int i = 0; i < s.length(); i++)
+   }
+    for(auto m:val){
+        char expected =checkChar[m];
+       if(expected ==){
 
-    {
-      char c = s[i];
-      if (i + 1 != s.length())
-      {
-        char next = s[i + 1];
-        if (pair[c] != next)
-        {
-          return false;
-        }
-      }
-
-      bracketPairs[c] += 1;
+       } 
     }
 
-    if (bracketPairs['}'] == bracketPairs['{'] && bracketPairs['('] == bracketPairs[')'] && bracketPairs['['] == bracketPairs[']'])
-    {
-
-      return true;
     }
-
-    return false;
-  }
 };
 
 int main()
